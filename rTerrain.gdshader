@@ -27,7 +27,7 @@ void vertex() {
 	
 	// Vertex Lighting, simple
 	vec3 N = (MODEL_MATRIX * vec4(NORMAL, 0.0)).xyz;
-	N = normalize(N);
+	N = normalize(N); // Must normalize b/c of potential Scaling
 	float ndl =  max(0.0, dot(N, EnvLightDir));
 	COLOR.rgb = EnvFogColor.rgb + (EnvLightColor.rgb * ndl);
 }
