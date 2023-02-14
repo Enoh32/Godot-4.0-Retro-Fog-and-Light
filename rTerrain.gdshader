@@ -22,7 +22,7 @@ void vertex() {
 	// Vertex Fog, using View Z-depth
 	vec4 V = PROJECTION_MATRIX * MODELVIEW_MATRIX * vec4(VERTEX, 1.0);
 	float z = V.z;
-	z -= EnvFogStart;
+	z = max(0.0, z-EnvFogStart);
 	vfog = clamp(z / (EnvFogEnd - EnvFogStart), 0.0, 1.0);
 	
 	// Vertex Lighting, simple
